@@ -1,0 +1,39 @@
+.App {
+  font-family: sans-serif;
+}
+.header {
+  background: #ccc;
+  padding: 15px;
+  font-weight: bold;
+}
+.logo {
+  border: 3px solid #666;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+.synopsis {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.search {
+  padding: 20px 0px;
+}
+select {
+  background-color: #ccc;
+  color: #666;
+  padding: 4px;
+  border: 2px solid #666;
+  font-size: 14px;
+  outline: none;
+  text-transform: uppercase;
+  border-radius: 5px;
+  position: absolute;
+}
+input {
+  border: 2px solid #666;
+  width: 100%;
+  border-radius: 5px;
+  padding-left: 125px;
+}
