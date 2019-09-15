@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import {
   Card,
   CardImg,
@@ -13,6 +14,7 @@ import {
 class List extends Component {
   render() {
     const { db } = this.props;
+    console.log(db, "props");
     return (
       <Fragment>
         <div className="List">
@@ -36,5 +38,13 @@ class List extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    db: state.db
+  };
+};
 
-export default List;
+export default connect(
+  mapStateToProps,
+  null
+)(List);

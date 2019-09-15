@@ -1,14 +1,21 @@
-import SEARCHTYPE from "./action";
-
 const initialState = {
-  searchvalue: "",
-  searchtype: "anime",
-  isLoading: true,
   db: []
 };
 
 const searchReducer = (state = initialState, action) => {
+  console.log(action, "action");
+
   switch (action.type) {
-    case action.SEARCHTYPE:
+    case "SEARCHTYPE":
+      return {
+        ...state,
+        db: action.data
+      };
+    default:
+      return {
+        ...state
+      };
   }
 };
+
+export default searchReducer;

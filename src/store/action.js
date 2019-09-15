@@ -1,4 +1,4 @@
-export const searchType = value => ({
-  type: SEARCHTYPE,
-  value
+export const searchval = data => ({
+  type: "SEARCHTYPE",
+  data
 });

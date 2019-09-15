@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
-import List from "./List";
 import axios from "axios";
-
+import { connect } from "react-redux";
 const searchlist = ["all", "anime", "manga", "character"];
 const searchType = searchlist.map((item, index) => (
   <option key={index} value={item}>
@@ -13,10 +12,10 @@ class Search extends Component {
   state = {
     searchvalue: "",
     searchtype: "anime",
-    isLoading: true,
-    db: []
+    isLoading: true
   };
   handleChange = e => {
+
     this.setState(
       {
         [e.target.name]: e.target.value
@@ -32,23 +31,15 @@ class Search extends Component {
             return res.data.results;
           })
           .then(data => {
-            this.setState({
-              isLoading: false,
-              db: data
-            });
+            console.log(data);
+            this.props.searchval(data);
           })
           .catch(err => console.log(err));
       }
     );
   };
 
-  componentDidMount() {
-    const { searchvalue, searchtype } = this.state;
-    console.log(searchtype, searchvalue, "test");
-  }
-
   render() {
-    const { db } = this.state;
     return (
       <Fragment>
         <div className="container">
@@ -67,11 +58,17 @@ class Search extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <List db={db} />
         </div>
       </Fragment>
     );
   }
 }
-
-export default Search;
+const mapDispatchToProps = dispatch => {
+  return {
+    searchval: data => dispatch({ type: "SEARCHTYPE", data })
+  };
+};
+export default connect(
+  null,
+  mapDispatchToProps
+)(Search);
